@@ -11,11 +11,28 @@
   "devDependencies": {
     "babel-preset-es2015": "^6.9.0",
     "browser-sync": "^2.14.0",
+    "del": "^2.2.1",
+    "eslint": "^3.2.0",
+    "eslint-config-standard": "^5.3.5",
+    "eslint-plugin-promise": "^2.0.0",
+    "eslint-plugin-standard": "^2.0.0",
     "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-clean-css": "^2.0.12",
     "gulp-concat": "^2.6.0",
     "gulp-cssmin": "^0.1.7",
+    "gulp-eslint": "^3.0.1",
+    "gulp-htmlmin": "^2.0.0",
+    "gulp-inject": "^4.1.0",
     "gulp-rename": "^1.2.2",
+    "gulp-rev": "^7.1.0",
+    "gulp-rev-replace": "^0.4.3",
+    "gulp-sass": "^2.3.2",
     "gulp-uglify": "^1.5.4",
+    "gulp-useref": "^3.1.0",
+    "normalize.css": "^4.2.0"
+  },
+  "dependencies": {
     "jquery": "^3.1.0"
   }
 }
