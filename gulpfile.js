@@ -21,7 +21,6 @@ gulp.task('help', () => {
     console.log('===========gulp build:项目发布打包==========');
     console.log('===========gulp run:项目启动===============');
     console.log('===========gulp help:gulp参数说明==========');
-    console.log('===========gulp server:测试server=========');
 });
 //js
 gulp.task('js', () => {
@@ -46,9 +45,6 @@ gulp.task('css', () => {
 })
 //build
 gulp.task('build', ['clear', 'html', 'js', 'css'], () => {
-    // let manifest = gulp.src("./build/rev-manifest.json");
-
-
     let target = gulp.src('./build/index.html');
     let sources = gulp.src(['./build/*.js', './build/*.css'], { read: false }, { relative: false });
 
@@ -70,8 +66,11 @@ gulp.task('clear', () => {
 
 /* 默认 */
 
-gulp.task('run', ['build'], () => {
+gulp.task('start', ['build'], () => {
     browserSync.init({
         server: ["./build", "./"]
     });
+    gulp.watch('src/index.html', ['build']).on("change", browserSync.reload);
+    gulp.watch('src/sass/*.scss', ['build']).on("change", browserSync.reload);
+    gulp.watch('src/script/*.js', ['build']).on("change", browserSync.reload);
 });
