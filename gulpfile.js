@@ -16,6 +16,9 @@ const rev = require('gulp-rev');///md5
 const inject = require('gulp-inject');
 const del = require('del');
 
+const url = require('url');
+const proxyMiddleware = require('http-proxy-middleware');
+
 // 说明
 gulp.task('help', () => {
     console.log('===========gulp build:项目发布打包==========');
@@ -64,11 +67,20 @@ gulp.task('clear', () => {
     ])
 })
 
+
+
 /* 默认 */
 
 gulp.task('start', ['build'], () => {
+    //反向代理
+    var proxy = proxyMiddleware('/openrest', { target: 'http://10.3.30.182:8999' });
     browserSync.init({
-        server: ["./build", "./"]
+        // notify: false,//关闭页面通知
+        server: {
+            baseDir: ["./build", "./"],
+            port: 3000,
+            middleware: [proxy]
+        }
     });
     gulp.watch('src/index.html', ['build']).on("change", browserSync.reload);
     gulp.watch('src/sass/*.scss', ['build']).on("change", browserSync.reload);
